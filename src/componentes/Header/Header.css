@@ -1,0 +1,29 @@
+.header{
+    margin: 0.9rem;
+    padding: 0.2rem;
+    display: flexbox;
+    align-content: flex-end;
+}
+.cart{
+    font-family: Roboto Condensed;
+    font-weight: 0;
+    font-size: 14px;
+    color: #502C1D;
+    background-color: #0066cc00;
+    padding: 5px 30px;
+    border: solid #502C1D 2px;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 50px;
+    transition : 1000ms;
+    transform: translateY(0);
+    text-transform: uppercase;
+}
+
+.cart:hover{
+    transition : 1000ms;
+    padding: 10px 50px;
+    transform : translateY(-0px);
+    background-color: #fff;
+    color: #0066cc;
+    border: solid 2px #0066cc;
+    }

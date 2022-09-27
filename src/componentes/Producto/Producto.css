@@ -1,0 +1,8 @@
+.form{
+    display: inline-block;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    width: 18rem;
+    padding: 10px;
+    border-radius: 6px;
+}

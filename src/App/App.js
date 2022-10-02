@@ -1,7 +1,8 @@
 import './App.css';
 import React from 'react';
-import {Header} from '../componentes/Header'
-import {Producto} from '../componentes/Producto'
+import {Header} from '../componentes/Header/Header'
+import {Producto} from '../componentes/Producto/Producto'
+import {Footer} from '../componentes/Footer/Footer'
 
 function App() {
   return (
@@ -9,8 +10,9 @@ function App() {
       <Header />
       <Producto/>
       {/* <AddToCart> */}
-        
+
       {/* </AddToCart> */}
+      <Footer/>
     </React.Fragment>
   );
 }

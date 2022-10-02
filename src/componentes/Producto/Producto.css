@@ -1,8 +1,67 @@
-.form{
-    display: inline-block;
-    flex-wrap: wrap;
-    background-color: whitesmoke;
-    width: 18rem;
-    padding: 10px;
-    border-radius: 6px;
+.img_beans{
+    max-width: 10rem;
+    height: auto;
 }
+.desc-title{
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 1;
+}
+.img_coffee{
+    max-height: 500px;
+    width: auto;
+}
+.toast-container {
+    margin-left: 25px;
+}
+.roast-result {
+    font-size: 0.8rem;
+}
+.roast-container {
+    display: flex;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    align-items: start;
+}
+
+.name-product {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 1px;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.custom-btn {
+    color: #fff;
+    background-color: #190E51;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+.custom-btn:hover {
+    transition: 0ms;
+    padding: 10px 10px;
+    transform: translateY(-0px);
+    background-color: #190E51;
+    color: #ffffff;
+    border: none;
+}
+.product-main {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 20px;
+    justify-content: center;
+}
+.gen-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+

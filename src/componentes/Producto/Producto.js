@@ -5,50 +5,50 @@ import image from "../../resources/img/coffee_bag.png";
 import coffee_beans from "../../resources/img/coffee-beans.png";
 import "./Producto.css";
 import * as STRING_CONSTANTS from "../../constants/string-constants";
-
-let shoppingCart = [];
+import {cartGlobalContext} from '../../App/context/CartGlobalContext';
 
 const productos = [
   {
     roastLevel: [
-      { value: "bajo", label: "LOW" },
-      { value: "medio", label: "MEDIUM" },
-      { value: "alto", label: "HIGH" },
+      { value: "low", label: "LOW" },
+      { value: "medium", label: "MEDIUM" },
+      { value: "high", label: "HIGH" },
     ],
     description:
       "Caramelly & Rich Blend. Sweet like Butterscotch, Flavours like Red Fruit & Apricot",
     bagSize: [
-      { value: 200, label: "Pequeño 200g", price: 13000 },
-      { value: 500, label: "Mediano 500g", price: 17000 },
-      { value: 700, label: "Grande 700g", price: 19000 },
+      { value: 200, label: "Small 200g", price: 13000 },
+      { value: 500, label: "Medium 500g", price: 17000 },
+      { value: 700, label: "Large 700g", price: 19000 },
     ],
     available: 7,
   },
 ];
 
 function Producto() {
+  const {cartValue, setCartValue} = React.useContext(cartGlobalContext);
   //se  usa  hook para actualizar el estado el nivel de tostado del café
   const [roast, setRoast] = useState(productos[0].roastLevel[1]);
   const [quantity, setQuantity] = useState(1);
-  const [bagSize, setBagSize] = useState("0"); //actualizador de estado de bolsa
+  const [bagSize, setBagSize] = useState(productos[0].bagSize[1]); //actualizador de estado de bolsa
 
   const handleSaveProduct = (event) => {
     event.preventDefault();
-    if (bagSize && bagSize > 0) {
+      let existing = cartValue;
       const cart = {
+        id: cartValue.length,
         roastLevel: roast.value,
         quantity: quantity,
-        price: bagSize,
+        price: bagSize.price*quantity,
+        bagSize: bagSize.label,
         description: productos[0].description,
+        img: "resources/img/cart-item.png"
       };
-      shoppingCart.push(cart);
-      console.log("hola ", shoppingCart);
-    }
+      existing.push(cart);
+      setCartValue(existing);
   };
   const handleBagSize = (bag) => {
-    console.log(bag)
-    setBagSize(bag.price);
-    console.log("aaaaaaaaaaaaaaaaaa", bagSize);
+    setBagSize(bag);
   };
 
   // Se crea un array de objetos que compondra todas
@@ -91,7 +91,7 @@ function Producto() {
                   />
                 ))}
               </div>
-              <p className="text-uppercase my-0 roast-result fw-semibold">
+              <p className="text-uppercase my-0 text-sm fw-semibold">
                 {roast.label}
               </p>
             </div>
@@ -104,6 +104,7 @@ function Producto() {
               required // Seleccion por defecto del tamaño de la bolsa.
               options={productos[0].bagSize} //Carga el primer producto de la lista creada.
               placeholder={"Please select"}
+              defaultValue={productos[0].bagSize[1]}
               onChange={handleBagSize}
               name="option"
               className="col-11 px-0 my-3"
@@ -138,7 +139,7 @@ function Producto() {
               <div
                 className="col-5 px-2 d-flex align-items-center ms-2
                 border-start border-secondary border-3 fw-semibold"
-              >{`$${bagSize * quantity}`}</div>
+              >{`$${bagSize.price * quantity}`}</div>
             </div>
             <div className="text-sm col-12 px-0 my-2">
               {STRING_CONSTANTS.CITIES_SHIPPING}
